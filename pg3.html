@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HBD Ponnuttahh 💗</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0b0b0b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.envelope {
+  width: 280px;
+  height: 260px;
+  background: #dd7b7b;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  font-size: 80px;
+  flex-direction: column; 
+}
+
+.envelope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #fff;
+}
+
+
+.envelope:hover {
+  transform: scale(1.15);
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .note {
+    font-size: 13px;
+  }
+
+  .envelope {
+    width: 220px;
+    height: 200px;
+    font-size: 60px;
+  }
+}
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card {
+  width: 340px;
+  background: linear-gradient(135deg,#ffd6e8,#ffb3d9);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.card h2 {
+  font-family: cursive;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.heart {
+  font-size: 45px;
+  margin: 10px 0;
+}
+
+.note {
+  color: #6a2c52;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(to right,#ff4fa3,#ff1e8a);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openNote()">
+  <div class="envelope-content">
+    💌<br>
+    <span class="envelope-text">Tap To View</span>
+  </div>
+</div>
+
+
+
+
+<div class="modal" id="modal">
+  <div class="card">
+
+
+    <div id="firstView">
+      <h2>A little note for you</h2>
+      <div class="heart">💗</div>
+      <button class="btn" onclick="showNote()">Tap to open</button>
+    </div>
+
+
+    <div id="secondView" style="display:none;">
+      <div class="heart">💗</div>
+      <div class="note">
+        Happy Birthday, my love Ponnuttahh 💖
+On this special day, I just want you to know how grateful I am to have you in my life. You bring happiness into my days with your smile, warmth into my heart with your care, and meaning into my world just by being you. Your kindness, strength, and beautiful soul inspire me every single day. I hope this year brings you endless joy, good health, success, and all the dreams your heart wishes for. Thank you for being my constant support and my favorite person. May your birthday be as special and wonderful as you are 🌸✨
+<b>Also Buy Me A Mandhi Alright😉</b>
+      </div>
+
+    
+      <a href="pg4.html">
+        <button class="btn">One More Thing →</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openNote() {
+  document.getElementById("modal").style.display = "flex";
+}
+
+function showNote() {
+  document.getElementById("firstView").style.display = "none";
+  document.getElementById("secondView").style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HBD Ponnuttahh 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    @media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}
+
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1a0010, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 420px;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255, 0, 128, 0.08);
+      box-shadow: 0 0 30px rgba(255, 0, 128, 0.35);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 44px;
+      color: #ff4da6;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 16px;
+      background: #2a0018;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff5db1, #ff0077);
+      box-shadow: 0 0 12px #ff4da6;
+      transition: width 0.1s linear;
+    }
+
+    .subtext {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-top: 10px;
+    }
+
+    .warning {
+      color: #ff77aa;
+      font-weight: 600;
+    }
+
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <p class="title">Measuring your cuteness...</p>
+      <h1 id="percentage">0%</h1>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+      </div>
+
+      <p class="subtext" id="statusText">Calculating cuteness...</p>
+    </div>
+  </div>
+
+
+  <canvas id="confetti"></canvas>
+
+  <script>
+    
+    let value = 0;
+    const max = 200;
+
+    const percentage = document.getElementById("percentage");
+    const progress = document.getElementById("progress");
+    const statusText = document.getElementById("statusText");
+
+    const interval = setInterval(() => {
+      value++;
+
+      percentage.textContent = value + "%";
+      progress.style.width = (value / max) * 100 + "%";
+
+      if (value > 100) {
+        statusText.textContent = "⚠ WARNING: TOO CUTE TO HANDLE";
+        statusText.classList.add("warning");
+      }
+
+      if (value >= max) {
+        clearInterval(interval);
+        startConfetti(); 
+        setTimeout(() => {
+          window.location.href = "pg2.html"; 
+        }, 4000); 
+      }
+    }, 40);
+
+   
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const colors = ['#FF69B4','#FF1493','#FFB6C1','#FFC0CB','#DB7093'];
+    const confettiParticles = [];
+
+    function random(min,max){ return Math.random()*(max-min)+min; }
+
+    function ConfettiParticle(){
+      this.x = random(0, canvas.width);
+      this.y = random(-20, canvas.height);
+      this.size = random(8, 15);
+      this.speed = random(2, 5);
+      this.color = colors[Math.floor(Math.random()*colors.length)];
+      this.angle = random(0, 2*Math.PI);
+      this.spin = random(-0.1,0.1);
+    }
+
+    ConfettiParticle.prototype.update = function(){
+      this.y += this.speed;
+      this.angle += this.spin;
+      if(this.y > canvas.height){
+        this.y = -10;
+        this.x = random(0, canvas.width);
+      }
+      this.draw();
+    }
+
+    ConfettiParticle.prototype.draw = function(){
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.fillStyle = this.color;
+      ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+      ctx.restore();
+    }
+
+    function startConfetti(){
+      for(let i=0; i<150; i++){
+        confettiParticles.push(new ConfettiParticle());
+      }
+      animateConfetti();
+    }
+
+    function animateConfetti(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confettiParticles.forEach(p => p.update());
+      requestAnimationFrame(animateConfetti);
+    }
+  </script>
+</body>
+</html>

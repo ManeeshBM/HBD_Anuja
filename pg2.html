@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBD Ponnuttahh 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background-color: black;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .mail-btn {
+    font-size: 18px;
+    height: 48px;
+  }
+
+  .see-more-btn {
+    width: 80%;
+  }
+}
+
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.heart-circle {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  background-color: rgb(243, 173, 210);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 0.6),
+    0 6px 12px rgba(0, 0, 0, 0.18),
+    0 0 50px rgba(233, 74, 74, 0.4);
+}
+
+.heart-circle h1 {
+  font-size: 45px;
+  margin: 0;
+}
+
+
+.title {
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  color: white;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.mail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 25px;
+}
+
+.mail-btn {
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 105, 180, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #ff9bcf;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.35s ease;
+}
+
+.mail-btn.active {
+  font-size: 14px;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+.see-more-btn {
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: large;
+  background-color: deeppink;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="heart-circle">
+    <h1>❤️</h1>
+  </div>
+
+  <h2 class="title">Just For You</h2>
+  <h5 class="subtitle">Tap Each One To Reveal !!</h5>
+
+  <div class="mail-container">
+    <div class="mail-btn" data-text="You look adorable">♡</div>
+    <div class="mail-btn" data-text="You have the sweetest vibe">♡</div>
+    <div class="mail-btn" data-text="You make things feel lighter">♡</div>
+    <div class="mail-btn" data-text="You are naturally charming">♡</div>
+    <div class="mail-btn" data-text="You should buy me a Mandhi">♡</div>
+  </div>
+
+  <a href="pg3.html">
+    <button class="see-more-btn" ><b>See More →</b></button>
+  </a>
+
+</div>
+
+<script>
+document.querySelectorAll('.mail-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!btn.classList.contains('active')) {
+      btn.classList.add('active');
+      btn.textContent = btn.dataset.text;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
